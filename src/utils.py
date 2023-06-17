@@ -19,3 +19,4 @@ def save_objects(file_path, ojb):
     except Exception as e:
         raise CustomException(e, sys)
 
+
