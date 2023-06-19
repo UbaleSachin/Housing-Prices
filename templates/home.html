@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>House Price Prediction</title>
+</head>
+<body style="background-color:black; align:center;border:thick dashed blue;">
+<div class="login">
+    <h1 style="color:orange; text-align:center;">-: House Price Prediction :-</h1>
+    <form action="{{url_for('predict_datapoint')}}" method="post">
+        <div class="mb-3" style="text-align:center;">
+            <label  class="form-label">LotArea: </label>
+            <input type="number" name="LotArea"
+            placeholder="Enter LotArea" required/>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="form-label">OverallQual: </label>
+            <input class="form-control" type="number" name="OverallQual"
+            placeholder="Enter OverallQual" min="0" max="10" required/>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="form-label">OverallCond: </label>
+            <input class="form-control" type="number" name="OverallCond"
+            placeholder="Enter OverallCond" min="0" max="10" required/>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="form-label">YearBuilt: </label>
+            <input type="number" min="1900" max="2023" step="1" placeholder="Enter year"  required/>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="form-label">YearRemodAdd: </label>
+            <input type="number" min="1900" max="2023" step="1" placeholder="Enter RemodAdd year" required/>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="form-label">TotalBsmtSF: </label>
+            <input type="number"  placeholder="Enter TotalBsmtSF"  required/>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="form-label">GrLivArea: </label>
+            <input type="number"  placeholder="Enter total ground living area"  required/>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="form-label">BsmtFullBath: </label>
+            <input type="radio" id="1" name="BsmtFullBath" value="0"  required/>
+            <label for="1">NO</label>
+            <input type="radio" id="2" name="BsmtFullBath" value="1" required/>
+            <label for="2">YES</label><br>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="form-label">TotRmsAbvGrd: </label>
+            <input class="form-control" type="number" name="TotRmsAbvGrd"
+            placeholder="Enter OverallCond" min="1" max="20"/>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="form-label">Fireplaces: </label>
+            <input type="radio" id="3" name="Fireplaces" value="0"  />
+            <label for="1">NO</label>
+            <input type="radio" id="4" name="Fireplaces" value="1" />
+            <label for="2">YES</label><br>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="form-label">GarageArea: </label>
+            <input type="number" name="GarageArea"
+            placeholder="Enter GarageArea" min="0" />
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="form-label">OpenPorchSF: </label>
+            <input type="number" name="OpenPorchSF"
+            placeholder="Enter OpenPorchSF" min="0" />
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="from-label">Street: </label>
+                    <select class="from-control" name="Street" placeholder="Select Street" required>
+                        <option class="placeholder" selected disabled value="">Select Street</option>
+                        <option value="Pave">
+                            Pave
+                        </option>
+                        <option value="Grvl">
+                            Grvl
+                        </option>
+                    </select>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="from-label">LotShape: </label>
+                    <select class="from-control" name="LotShape" placeholder="Select LotShape" required>
+                        <option class="placeholder" selected disabled value="">Select LotShape</option>
+                        <option value="Reg">
+                            Reg
+                        </option>
+                        <option value="IR1">
+                            IR1
+                        </option>
+                        <option value="IR2">
+                            IR2
+                        </option>
+                        <option value="IR3">
+                            IR3
+                        </option>
+                    </select>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="from-label">LandSlope: </label>
+                    <select class="from-control" name="LandSlope" placeholder="Select LandSlope" required>
+                        <option class="placeholder" selected disabled value="">Select LandSlope</option>
+                        <option value="Gtl">
+                            Gtl
+                        </option>
+                        <option value="Mod">
+                            Mod
+                        </option>
+                        <option value="Sev">
+                            Sev
+                        </option>
+                    </select>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="from-label">Neighborhood: </label>
+                    <select class="from-control" name="Neighborhood" placeholder="Select Neighborhood" required>
+                        <option class="placeholder" selected disabled value="">Select Neighborhood</option>
+                        <option value="CollgCr">
+                            CollgCr
+                        </option>
+                        <option value="Veenker">
+                            Veenker
+                        </option>
+                        <option value="Crawfor">
+                            Crawfor
+                        </option>
+                        <option value="NoRidge">
+                            NoRidge
+                        </option>
+                        <option value="Mitchel">
+                            Mitchel
+                        </option>
+                        <option value="Somerst">
+                            Somerst
+                        </option>
+                        <option value="NWAmes">
+                            NWAmes
+                        </option>
+                        <option value="OldTown">
+                            OldTown
+                        </option>
+                        <option value="BrkSide">
+                            BrkSide
+                        </option>
+                        <option value="Sawyer">
+                            Sawyer
+                        </option>
+                        <option value="NridgHt">
+                            NridgHt
+                        </option>
+                        <option value="NAmes">
+                            NAmes
+                        </option>
+                        <option value="SawyerW">
+                            SawyerW
+                        </option>
+                        <option value="IDOTRR">
+                            IDOTRR
+                        </option>
+                        <option value="MeadowV">
+                            MeadowV
+                        </option>
+                        <option value="Edwards">
+                            Edwards
+                        </option>
+                        <option value="Timber">
+                            Timber
+                        </option>
+                        <option value="Gilbert">
+                            Gilbert
+                        </option>
+                        <option value="StoneBr">
+                            StoneBr
+                        </option>
+                        <option value="ClearCr">
+                            ClearCr
+                        </option>
+                        <option value="NPkVill">
+                            NPkVill
+                        </option>
+                        <option value="Blmngtn">
+                            Blmngtn
+                        </option>
+                        <option value="BrDale">
+                            BrDale
+                        </option>
+                        <option value="SWISU">
+                            SWISU
+                        </option>
+                        <option value="Blueste">
+                            Blueste
+                        </option>
+                    </select>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="from-label">Foundation: </label>
+                    <select class="from-control" name="Foundation" placeholder="Select Foundation" required>
+                        <option class="placeholder" selected disabled value="">Select Foundation</option>
+                        <option value="PConc">
+                            PConc
+                        </option>
+                        <option value="CBlock">
+                            CBlock
+                        </option>
+                        <option value="BrkTil">
+                            BrkTil
+                        </option>
+                        <option value="Wood">
+                            Wood
+                        </option>
+                        <option value="Slab">
+                            Slab
+                        </option>
+                        <option value="Stone">
+                            Stone
+                        </option>
+                    </select>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <label class="from-label">CentralAir: </label>
+                    <select  class="from-control" name="LandSlope" placeholder="Select CentralAir" required>
+                        <option  class="placeholder" selected disabled value="">Select CentralAir</option>
+                        <option value="Y">
+                            Y
+                        </option>
+                        <option value="N">
+                            N
+                        </option>
+                    </select>
+        </div><br>
+        <div class="mb-3" style="text-align:center;">
+            <input style="background-color:green; padding: 15px 32px; font-size: 16px; cursor: pointer;"
+                   class="btn btn-primary" type="submit" value="Predict House Price" required />
+        </div><br>
+    </form>
+</div>
+<h2 style="text-align:center;color:purple;">Predicted House Price is: {{result}}</h2>
+</body>
+</html>
